@@ -1,3 +1,7 @@
+//
+// Created by amito on 1/19/2023.
+//
+
 #ifndef MTM_EXCEPTION_H
 #define MTM_EXCEPTION_H
 #include <stdexcept>
@@ -5,9 +9,6 @@
 #include <cstring>
 #include <iostream>
 
-/**
- * Thrown when there was no file given
- */
 class DeckFileNotFound : public std::exception
 {
 public:
@@ -16,18 +17,14 @@ public:
         return ("Deck File Error: File not found");
     }
 };
-/**
- * Thrown when the content of the file didn't match any name of a card
- */
+
 class DeckFileFormatError : public std::runtime_error
 {
 public:
     explicit DeckFileFormatError(int lineNumber):std::
                                                  runtime_error(("Deck File Error: File format error in line "+ to_string(lineNumber)).c_str()){}
 };
-/**
- * Thrown when the file had too few card names
- */
+
 class DeckFileInvalidSize : public std::exception
 {
 public:

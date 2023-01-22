@@ -1,9 +1,13 @@
+//
+// Created by amito on 1/19/2023.
+//
+
 #include "Card.h"
 #include "utilities.h"
 #include "Player.h"
 
 
-Card::Card(string name): m_name(std::move(name)),{
+Card::Card(string name): m_name(std::move(name)){
 
 }
 

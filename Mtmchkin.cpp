@@ -1,5 +1,5 @@
 //
-// Created by nicol on 12/06/2022.
+// Created by amito on 1/19/2023.
 //
 
 #include <iostream>
@@ -83,14 +83,6 @@ int Mtmchkin::getNumberOfRounds() const
     return m_numOfRounds;
 }
 
-
-
-/**--------------------------------------------------------------------------------------------------------------
- *
- * helper functions for cards receiving in the constructor
- *
- ---------------------------------------------------------------------------------------------------------------*/
-
 bool cardNameExist(string& cardName)
 {
     if(cardName == "Gremlin" ||cardName == "Witch" || cardName == "Dragon" ||
@@ -131,44 +123,13 @@ void receiveCards(std::deque<unique_ptr<Card>>& deck, const string& fileName)
 
     int line = 1;
     std::deque<std::unique_ptr<BattleCard>> gang;
- /*   while (std::getline(source, inputName))
-    {
-        if (!cardNameExist(inputName))
-        {
-            throw DeckFileFormatError(line);
-        }
-        if(inputName == "Gang")
-        {
-            std::getline(source, inputName);
-            while (inputName != "EndGang")
-            {
-                gang.push_back(mapBattleCard[inputName]());
-                std::getline(source, inputName);
-            }
-            deck.push_back(std::unique_ptr<Card>(new Gang(gang)));
-            while (!gang.empty())
-            {
-                gang.pop_back();
-            }
-        }
-        else
-        {
-            deck.push_back(Map[inputName]());
-        }
-        line++;
-    }*/
+
     if(deck.size() < MIN_CARDS_SIZE)
     {
         throw DeckFileInvalidSize();
     }
 }
 
-
-/**--------------------------------------------------------------------------------------------------------------
- *
- * helper function for players receiving in the constructor
- *
- ---------------------------------------------------------------------------------------------------------------*/
 bool invalidName(string name)
 {
     if(name.size() > MAX_NAME_LENGTH)
