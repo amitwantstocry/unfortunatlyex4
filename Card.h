@@ -5,7 +5,7 @@
 #define EX2_Card_H
 
 #include <string>
-#include "Player.h"
+#include "Players/Player.h"
 #include "utilities.h"
 
 /*
@@ -60,7 +60,7 @@ public:
 protected:
     string getName() const;
 private:
-    string m_name
+    string m_name;
 };
 
 
