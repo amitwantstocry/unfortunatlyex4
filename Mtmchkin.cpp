@@ -1,7 +1,3 @@
-//
-// Created by nicol on 12/06/2022.
-//
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -93,9 +89,9 @@ int Mtmchkin::getNumberOfRounds() const
 
 bool cardNameExist(string& cardName)
 {
-    if(cardName == "Fairy" ||cardName == "Goblin" || cardName == "Vampire" || cardName == "Dragon" ||
-       cardName == "Barfight" || cardName == "Treasure" || cardName == "Merchant" || cardName == "Pitfall"||
-       cardName == "Gang")
+    if(cardName == "Gremlin" ||cardName == "Witch" || cardName == "Dragon" ||
+       cardName == "Barfight" || cardName == "Treasure" || cardName == "Merchant" || cardName == "Well"||
+       cardName == "Mana")
     {
         return true;
     }
@@ -114,24 +110,24 @@ void receiveCards(std::deque<unique_ptr<Card>>& deck, const string& fileName)
     std::string inputName;
     std::map <string, unique_ptr<Card>(*)()> Map;
 
-    Map["Vampire"] = createCard<Vampire>;
-    Map["Goblin"] = createCard<Goblin>;
+    Map["Mana"] = createCard<Mana>;
+    Map["Gremlin"] = createCard<Gremlin>;
     Map["Dragon"] = createCard<Dragon>;
     Map["Merchant"] = createCard<Merchant>;
-    Map["Pitfall"] = createCard<Pitfall>;
-    Map["Fairy"] = createCard<Fairy>;
+    Map["Well"] = createCard<Well>;
+    Map["Witch"] = createCard<Witch>;
     Map["Treasure"] = createCard<Treasure>;
     Map["Barfight"] = createCard<Barfight>;
 
     std::map<string, unique_ptr<BattleCard>(*)()> mapBattleCard;
 
-    mapBattleCard["Vampire"] = createBattleCard<Vampire>;
-    mapBattleCard["Goblin"] = createBattleCard<Goblin>;
+    mapBattleCard["Witch"] = createBattleCard<Witch>;
+    mapBattleCard["Gremlin"] = createBattleCard<Gremlin>;
     mapBattleCard["Dragon"] = createBattleCard<Dragon>;
 
     int line = 1;
     std::deque<std::unique_ptr<BattleCard>> gang;
-    while (std::getline(source, inputName))
+ /*   while (std::getline(source, inputName))
     {
         if (!cardNameExist(inputName))
         {
@@ -156,7 +152,7 @@ void receiveCards(std::deque<unique_ptr<Card>>& deck, const string& fileName)
             deck.push_back(Map[inputName]());
         }
         line++;
-    }
+    }*/
     if(deck.size() < MIN_CARDS_SIZE)
     {
         throw DeckFileInvalidSize();
@@ -203,9 +199,9 @@ void receivePlayers(std::deque<unique_ptr<Player>>& playersQueue)
     int teamSize = std::stoi(buffer);
 
     std::map <string, unique_ptr<Player>(*)(const std::string&)> Map;
-    Map["Fighter"] = createPlayer<Fighter>;
-    Map["Wizard"] = createPlayer<Wizard>;
-    Map["Rogue"] = createPlayer<Rogue>;
+    Map["Ninja"] = createPlayer<Ninja>;
+    Map["Warrior"] = createPlayer<Warrior>;
+    Map["Healer"] = createPlayer<Healer>;
 
     buffer = "";
     for(int i=0; i < teamSize;  i++)
@@ -229,7 +225,7 @@ void receivePlayers(std::deque<unique_ptr<Player>>& playersQueue)
             {
                 printInvalidName();
             }
-            else if(playerJob != "Rogue" && playerJob != "Fighter" && playerJob != "Wizard")
+            else if(playerJob != "Healer" && playerJob != "Warrior" && playerJob != "Ninja")
             {
                 printInvalidClass();
             }
