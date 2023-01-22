@@ -2,21 +2,21 @@
 #define MTMCHKIN_H_
 
 
+#include "Players/Player.h"
+#include "Players/Healer.h"
+#include "Players/Ninja.h"
+#include "Players/Warrior.h"
 #include "Cards/Card.h"
-#include "Cards/Goblin.h"
-#include "Cards/Vampire.h"
+#include "Cards/Barfight.h"
+#include "Cards/BattleCard.h"
 #include "Cards/Dragon.h"
+#include "Cards/Gremlin.h"
+#include "Cards/Mana.h"
 #include "Cards/Merchant.h"
 #include "Cards/Treasure.h"
-#include "Cards/Pitfall.h"
-#include "Cards/Barfight.h"
-#include "Cards/Gang.h"
-#include "Cards/Fairy.h"
-#include "Players/Player.h"
-#include "Players/Rogue.h"
-#include "Players/Wizard.h"
-#include "Players/Fighter.h"
-#include "utilities.h"
+#include "Cards/Well.h"
+#include "Cards/Witch.h"
+#include "Exception.h"
 
 #include <memory>
 #include <queue>
